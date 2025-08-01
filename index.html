@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RRU Annapurna Mess Menu</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e6f9d5, #b8f2c5);
+      color: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      font-size: 1.5em;
+      font-weight: bold;
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #2a7a4f;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 30px;
+      max-width: 1200px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .column {
+      background: #ffffffcc;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .column:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .column h2 {
+      font-size: 1.4em;
+      color: #2a7a4f;
+      margin-bottom: 10px;
+    }
+
+    .column ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .column li {
+      margin-bottom: 8px;
+    }
+
+    .non-veg {
+      color: #d32f2f;
+      font-weight: bold;
+    }
+
+    .quote {
+      margin: 30px 20px 10px;
+      font-size: 1.2em;
+      font-style: italic;
+      text-align: center;
+      max-width: 800px;
+      color: #264653;
+    }
+
+    .donate {
+      margin: 20px;
+      text-align: center;
+    }
+
+    .donate button {
+      padding: 10px 18px;
+      font-size: 1em;
+      background-color: #2a7a4f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .donate button:hover {
+      background-color: #1e5f3b;
+    }
+
+    .feedback-link {
+      text-align: center;
+      margin: 15px;
+    }
+
+    .feedback-link a {
+      text-decoration: none;
+      color: #2a7a4f;
+      font-weight: 600;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 10px;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    🍽️ Today's Menu at Annapurna Mess
+  </header>
+
+  <div class="grid">
+    <div class="column">
+      <h2>🍞 Breakfast<br><small>8:00 AM – 9:45 AM</small></h2>
+      <ul>
+        <li>Poha</li>
+        <li>Idli Sambhar</li>
+        <li class="non-veg">Boiled Egg 🥚</li>
+        <li>Banana</li>
+        <li>Bread Butter</li>
+      </ul>
+    </div>
+    <div class="column">
+      <h2>🍛 Lunch<br><small>12:30 PM – 2:00 PM</small></h2>
+      <ul>
+        <li>Roti</li>
+        <li>Dal Fry</li>
+        <li>Rice</li>
+        <li>Seasonal Veg</li>
+        <li class="non-veg">Chicken Curry 🍗</li>
+      </ul>
+    </div>
+    <div class="column">
+      <h2>🍪 Snacks<br><small>4:45 PM – 5:30 PM</small></h2>
+      <ul>
+        <li>Tea</li>
+        <li>Biscuits</li>
+        <li>Fruits</li>
+        <li>Samosa</li>
+        <li>Namkeen</li>
+      </ul>
+    </div>
+    <div class="column">
+      <h2>🍽️ Dinner<br><small>8:00 PM – 9:30 PM</small></h2>
+      <ul>
+        <li>Roti</li>
+        <li>Paneer Curry</li>
+        <li>Dal Tadka</li>
+        <li>Jeera Rice</li>
+        <li>Gulab Jamun</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quote" id="quote">Loading daily health quote...</div>
+
+  <div class="feedback-link">
+    <a href="https://forms.gle/Dw65TyYw5qpcMhnL9" target="_blank">Submit Feedback</a>
+  </div>
+
+
+  <div class="donate">
+    <button onclick="window.location.href='upi://pay?pa=hitupi@axl&pn=Himanshu%20Tiwari&cu=INR'">Support via UPI: hitupi@axl</button>
+  </div>
+
+
+  <div class="footer">
+    © Made with thirst and hunger 😁
+  </div>
+
+  <script>
+    // Daily Health Quote
+    const quotes = [
+      "Eat food, not too much, mostly plants. 🌱",
+      "A healthy outside starts from the inside. 💧",
+      "An apple a day keeps the doctor away. 🍎",
+      "Take care of your body. It's the only place you have to live.",
+      "Wellness is the natural state of my body."
+    ];
+    const quoteIndex = new Date().getDate() % quotes.length;
+    document.getElementById("quote").textContent = quotes[quoteIndex];
+  </script>
+</body>
+</html>
