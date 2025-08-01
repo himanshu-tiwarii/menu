@@ -3,7 +3,7 @@
 This is a single-page responsive web app showing the daily meal schedule for the **RRU Annapurna Mess**. Built with love — and a little hunger — this project aims to provide a clean, mobile-friendly way to check what's cooking!
 
 ## 🔗 Live Website
-[👉 Visit Mess Menu](https://himanshu-tiwarii.github.io/messmenu)
+[👉 Visit Mess Menu](https://himanshu-tiwarii.github.io/menu)
 
 ## 📦 Features
 
