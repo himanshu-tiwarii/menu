@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RRU Eats😋</title>
+  <title>Annapurna Mess Menu</title>
 
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#2a7a4f" />
@@ -41,10 +41,16 @@
     }
 
     .column {
-      background: #fff;
+      background: #ffffffcc;
       padding: 15px;
       border-radius: 10px;
       box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .column:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
 
     .column h2 {
@@ -71,7 +77,8 @@
     }
 
     .feedback-link {
-      margin: 15px;
+      margin: 10px;
+      text-align: center;
     }
 
     .feedback-link a {
@@ -80,12 +87,16 @@
       font-weight: 600;
     }
 
-    .install-btn {
+    .install-section {
+      text-align: center;
       margin: 10px;
-      padding: 6px 12px;
+    }
+
+    .install-btn {
+      padding: 6px 14px;
       font-size: 0.9em;
       background: #2a7a4f;
-      color: #fff;
+      color: white;
       border: none;
       border-radius: 6px;
       cursor: pointer;
@@ -100,6 +111,24 @@
       margin: 20px 0;
       font-size: 0.85em;
       color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (min-width: 600px) {
+      .install-section {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -142,16 +171,13 @@
     <a href="https://forms.gle/Dw65TyYw5qpcMhnL9" target="_blank">Submit Feedback</a>
   </div>
 
-  <!-- PWA Install Button -->
-  <button class="install-btn" id="installBtn" style="display: none;">📱 Download as WebApp</button>
+  <!-- Install Button -->
+  <div class="install-section">
+    <button class="install-btn" id="installBtn" style="display: none;">
+      📱 Download as WebApp
+    </button>
+  </div>
 
-  <!-- Download Button here -->
-<div class="install-section">
-  <button class="install-btn" id="installBtn" style="display: none;">
-    📱 Download as WebApp
-  </button>
-</div>
-  
   <div class="footer">
     ht © Made with Masala 😋
   </div>
@@ -167,7 +193,7 @@
     ];
     document.getElementById("quote").textContent = quotes[new Date().getDate() % quotes.length];
 
-    // Custom Install Prompt
+    // PWA Install Button for Mobile
     let deferredPrompt;
     const installBtn = document.getElementById('installBtn');
 
@@ -180,8 +206,8 @@
     installBtn.addEventListener('click', () => {
       if (deferredPrompt) {
         deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
+        deferredPrompt.userChoice.then((choice) => {
+          if (choice.outcome === 'accepted') {
             console.log('User accepted install');
           } else {
             console.log('User dismissed install');
@@ -194,5 +220,3 @@
   </script>
 </body>
 </html>
-
-
