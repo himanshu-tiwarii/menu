@@ -3,60 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RRU Annapurna Mess Menu</title>
+  <title>Annapurna Mess Menu</title>
 
-  <!-- PWA manifest and theme color -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#2a7a4f" />
 
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
       background: linear-gradient(to right, #e6f9d5, #b8f2c5);
       color: #1a1a1a;
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
     }
 
     header {
       width: 100%;
       text-align: center;
       padding: 10px;
-      font-size: 1.5em;
+      font-size: 1.4em;
       font-weight: bold;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: #fff;
       color: #2a7a4f;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
-      padding: 30px;
-      max-width: 1200px;
+      padding: 20px;
+      max-width: 1000px;
       width: 100%;
       box-sizing: border-box;
     }
 
     .column {
-      background: #ffffffcc;
-      padding: 20px;
+      background: #fff;
+      padding: 15px;
       border-radius: 10px;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .column:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     }
 
     .column h2 {
-      font-size: 1.4em;
+      font-size: 1.2em;
       color: #2a7a4f;
       margin-bottom: 10px;
     }
@@ -64,47 +56,21 @@
     .column ul {
       list-style: none;
       padding-left: 0;
+      margin: 0;
     }
 
     .column li {
-      margin-bottom: 8px;
-    }
-
-    .non-veg {
-      color: #d32f2f;
-      font-weight: bold;
+      margin-bottom: 6px;
     }
 
     .quote {
-      margin: 30px 20px 10px;
-      font-size: 1.2em;
+      margin: 20px;
       font-style: italic;
       text-align: center;
-      max-width: 800px;
       color: #264653;
     }
 
-    .donate {
-      margin: 20px;
-      text-align: center;
-    }
-
-    .donate button {
-      padding: 10px 18px;
-      font-size: 1em;
-      background-color: #2a7a4f;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .donate button:hover {
-      background-color: #1e5f3b;
-    }
-
     .feedback-link {
-      text-align: center;
       margin: 15px;
     }
 
@@ -114,74 +80,58 @@
       font-weight: 600;
     }
 
+    .install-btn {
+      margin: 10px;
+      padding: 6px 12px;
+      font-size: 0.9em;
+      background: #2a7a4f;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .install-btn:hover {
+      background: #1e5f3b;
+    }
+
     .footer {
       text-align: center;
-      margin-top: 40px;
-      padding: 10px;
-      font-size: 0.9em;
+      margin: 20px 0;
+      font-size: 0.85em;
       color: #555;
-    }
-
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
 <body>
-  <header>
-    🍽 Today's Menu at Annapurna Mess
-  </header>
+  <header>🍽 Today's Menu at Annapurna Mess</header>
 
   <div class="grid">
     <div class="column">
-      <h2>🍞 Breakfast<br><small>7:15 AM – 9:30 AM</small></h2>
+      <h2>🍞 Breakfast<br><small>7:15 – 9:30 AM</small></h2>
       <ul>
-        <li>Thepla</li>
-        <li>Aalo Sabji</li>
-        <li>Papaya</li>
-        <li>Bread Jam/Butter</li>
-        <li>Dalia</li>
-        <li>Tea</li>
-        <li>Milk</li>
-        <li>Coffee/Chocolate pw</li>
+        <li>Thepla</li><li>Aalo Sabji</li><li>Papaya</li><li>Bread Jam/Butter</li>
+        <li>Dalia</li><li>Tea</li><li>Milk</li><li>Coffee/Chocolate pw</li>
       </ul>
     </div>
     <div class="column">
-      <h2>🍛 Lunch<br><small>12:15 PM – 2:15 PM</small></h2>
+      <h2>🍛 Lunch<br><small>12:15 – 2:15 PM</small></h2>
       <ul>
-        <li>Bhindi Do Pyaza</li>
-        <li>Methi Mattar Masala</li>
-        <li>Rice</li>
-        <li>Roti</li>
-        <li>Curd</li>
+        <li>Bhindi Do Pyaza</li><li>Methi Mattar Masala</li><li>Rice</li>
+        <li>Roti</li><li>Curd</li>
       </ul>
     </div>
     <div class="column">
-      <h2>🍪 Snacks<br><small>4:30 PM – 6:00 PM</small></h2>
+      <h2>🍪 Snacks<br><small>4:30 – 6:00 PM</small></h2>
       <ul>
-        <li>American Corn</li>
-        <li>Tea</li>
-        <li>Milk</li>
-        <li>Coffee Powder</li> 
+        <li>American Corn</li><li>Tea</li><li>Milk</li><li>Coffee Powder</li>
       </ul>
     </div>
     <div class="column">
-      <h2>🍽 Dinner<br><small>7:30 PM – 9:30 PM</small></h2>
+      <h2>🍽 Dinner<br><small>7:30 – 9:30 PM</small></h2>
       <ul>
-        <li>Cabbage Mattar</li>
-        <li>Dal Fry</li>
-        <li>Rice</li>
-        <li>Roti</li>
-        <li>Butter Milk</li>
-        <li>Salad</li>
+        <li>Cabbage Mattar</li><li>Dal Fry</li><li>Rice</li>
+        <li>Roti</li><li>Butter Milk</li><li>Salad</li>
       </ul>
     </div>
   </div>
@@ -192,12 +142,15 @@
     <a href="https://forms.gle/Dw65TyYw5qpcMhnL9" target="_blank">Submit Feedback</a>
   </div>
 
+  <!-- PWA Install Button -->
+  <button class="install-btn" id="installBtn" style="display: none;">📱 Download as WebApp</button>
+
   <div class="footer">
-    ht © Made with Masala😋
+    ht © Made with Masala 😋
   </div>
 
   <script>
-    // Daily Health Quote
+    // Daily Quote
     const quotes = [
       "Eat food, not too much, mostly plants. 🌱",
       "A healthy outside starts from the inside. 💧",
@@ -205,33 +158,30 @@
       "Take care of your body. It's the only place you have to live.",
       "Wellness is the natural state of my body."
     ];
-    const quoteIndex = new Date().getDate() % quotes.length;
-    document.getElementById("quote").textContent = quotes[quoteIndex];
-  </script>
+    document.getElementById("quote").textContent = quotes[new Date().getDate() % quotes.length];
 
-  <!-- PWA install prompt -->
-  <script>
+    // Custom Install Prompt
     let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
 
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
+      installBtn.style.display = 'inline-block';
+    });
 
-      if (!localStorage.getItem('pwaPromptShown')) {
-        setTimeout(() => {
-          if (confirm("Install RRU Eats as an app on your device?")) {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-              if (choiceResult.outcome === 'accepted') {
-                console.log('User accepted the A2HS prompt');
-              } else {
-                console.log('User dismissed the A2HS prompt');
-              }
-              deferredPrompt = null;
-            });
+    installBtn.addEventListener('click', () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted install');
+          } else {
+            console.log('User dismissed install');
           }
-          localStorage.setItem('pwaPromptShown', 'yes');
-        }, 2000);
+          deferredPrompt = null;
+          installBtn.style.display = 'none';
+        });
       }
     });
   </script>
