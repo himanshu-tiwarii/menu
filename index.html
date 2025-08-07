@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Annapurna Mess Menu</title>
+  <title>RRU Eats😋</title>
 
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#2a7a4f" />
@@ -133,14 +133,14 @@
   </style>
 </head>
 <body>
-  <header>🍽 Today's Menu at Annapurna Mess</header>
+  <header>🍽Menu at Annapurna Mess</header>
 
   <div class="grid">
     <div class="column">
       <h2>🍞 Breakfast<br><small>7:15 – 9:30 AM</small></h2>
       <ul>
         <li>Thepla</li><li>Aalo Sabji</li><li>Papaya</li><li>Bread Jam/Butter</li>
-        <li>Dalia</li><li>Tea</li><li>Milk</li><li>Coffee/Chocolate pw</li>
+        <li>Dalia</li><li>Tea</li>
       </ul>
     </div>
     <div class="column">
@@ -193,30 +193,29 @@
     ];
     document.getElementById("quote").textContent = quotes[new Date().getDate() % quotes.length];
 
-    // PWA Install Button for Mobile
-    let deferredPrompt;
-    const installBtn = document.getElementById('installBtn');
+<script>
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    // Only show on mobile
+    if (window.innerWidth < 600) {
       installBtn.style.display = 'inline-block';
-    });
+    }
+  });
 
-    installBtn.addEventListener('click', () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choice) => {
-          if (choice.outcome === 'accepted') {
-            console.log('User accepted install');
-          } else {
-            console.log('User dismissed install');
-          }
-          deferredPrompt = null;
-          installBtn.style.display = 'none';
-        });
-      }
-    });
-  </script>
+  installBtn.addEventListener('click', () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choice) => {
+        deferredPrompt = null;
+        installBtn.style.display = 'none';
+      });
+    }
+  });
+</script>
 </body>
 </html>
+
