@@ -5,21 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RRU Annapurna Mess Menu</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+  <!-- PWA manifest and theme color -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#2a7a4f" />
 
-    html, body {
+  <style>
+    body {
       margin: 0;
-      padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(to right, #e6f9d5, #b8f2c5);
       color: #1a1a1a;
       display: flex;
       flex-direction: column;
       align-items: center;
-      overflow-x: hidden;
+      min-height: 100vh;
     }
 
     header {
@@ -35,11 +34,12 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
       padding: 30px;
       max-width: 1200px;
       width: 100%;
+      box-sizing: border-box;
     }
 
     .column {
@@ -84,6 +84,25 @@
       color: #264653;
     }
 
+    .donate {
+      margin: 20px;
+      text-align: center;
+    }
+
+    .donate button {
+      padding: 10px 18px;
+      font-size: 1em;
+      background-color: #2a7a4f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .donate button:hover {
+      background-color: #1e5f3b;
+    }
+
     .feedback-link {
       text-align: center;
       margin: 15px;
@@ -102,11 +121,23 @@
       font-size: 0.9em;
       color: #555;
     }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
-    🍽️ Today's Menu at Annapurna Mess
+    🍽 Today's Menu at Annapurna Mess
   </header>
 
   <div class="grid">
@@ -143,7 +174,7 @@
       </ul>
     </div>
     <div class="column">
-      <h2>🍽️ Dinner<br><small>7:30 PM – 9:30 PM</small></h2>
+      <h2>🍽 Dinner<br><small>7:30 PM – 9:30 PM</small></h2>
       <ul>
         <li>Cabbage Mattar</li>
         <li>Dal Fry</li>
@@ -166,6 +197,7 @@
   </div>
 
   <script>
+    // Daily Health Quote
     const quotes = [
       "Eat food, not too much, mostly plants. 🌱",
       "A healthy outside starts from the inside. 💧",
@@ -175,6 +207,33 @@
     ];
     const quoteIndex = new Date().getDate() % quotes.length;
     document.getElementById("quote").textContent = quotes[quoteIndex];
+  </script>
+
+  <!-- PWA install prompt -->
+  <script>
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+
+      if (!localStorage.getItem('pwaPromptShown')) {
+        setTimeout(() => {
+          if (confirm("Install RRU Eats as an app on your device?")) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+              if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the A2HS prompt');
+              } else {
+                console.log('User dismissed the A2HS prompt');
+              }
+              deferredPrompt = null;
+            });
+          }
+          localStorage.setItem('pwaPromptShown', 'yes');
+        }, 2000);
+      }
+    });
   </script>
 </body>
 </html>
