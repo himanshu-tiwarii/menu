@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RRU Annapurna Mess Menu</title>
+
+  <!-- PWA manifest and theme color -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#2a7a4f" />
+
   <style>
     body {
       margin: 0;
@@ -144,11 +149,9 @@
         <li>Papaya</li>
         <li>Bread Jam/Butter</li>
         <li>Dalia</li>
- <li>Tea</li>
- <li>Milk</li>
- <li>Coffee/Chocolate pw</li>
- 
-      
+        <li>Tea</li>
+        <li>Milk</li>
+        <li>Coffee/Chocolate pw</li>
       </ul>
     </div>
     <div class="column">
@@ -178,7 +181,7 @@
         <li>Rice</li>
         <li>Roti</li>
         <li>Butter Milk</li>
-<li>Salad</li>
+        <li>Salad</li>
       </ul>
     </div>
   </div>
@@ -189,10 +192,8 @@
     <a href="https://forms.gle/Dw65TyYw5qpcMhnL9" target="_blank">Submit Feedback</a>
   </div>
 
-
- 
   <div class="footer">
-   ht © Made with Masala😋
+    ht © Made with Masala😋
   </div>
 
   <script>
@@ -207,7 +208,32 @@
     const quoteIndex = new Date().getDate() % quotes.length;
     document.getElementById("quote").textContent = quotes[quoteIndex];
   </script>
+
+  <!-- PWA install prompt -->
+  <script>
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+
+      if (!localStorage.getItem('pwaPromptShown')) {
+        setTimeout(() => {
+          if (confirm("Install RRU Eats as an app on your device?")) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+              if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the A2HS prompt');
+              } else {
+                console.log('User dismissed the A2HS prompt');
+              }
+              deferredPrompt = null;
+            });
+          }
+          localStorage.setItem('pwaPromptShown', 'yes');
+        }, 2000);
+      }
+    });
+  </script>
 </body>
 </html>
-
-

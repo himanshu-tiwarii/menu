@@ -1,0 +1,12 @@
+{
+  name RRU Eats,
+  short_name RRU Eats,
+  start_url .,
+  display standalone,
+  background_color #e6f9d5,
+  theme_color #2a7a4f,
+  orientation portrait,
+  icons [
+    {
+      src icon-192.png,
+      sizes 192x1
