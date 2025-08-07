@@ -1,6 +1,6 @@
 {
   "name": "Annapurna Mess Menu",
-  "short_name": "RRU Mess",
+  "short_name": "RRU Eats😋",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -18,3 +18,4 @@
     }
   ]
 }
+
