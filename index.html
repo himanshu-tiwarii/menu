@@ -190,10 +190,59 @@
   <div class="footer">
     ht © Made with Masala 😋
   </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // ✅ New Daily Quotes
+    const quotes = [
+      "Health is a state of complete harmony of the body, mind, and spirit. 🧘‍♀️",
+      "Your body hears everything your mind says. Be kind to yourself. 💖",
+      "Sleep, water, and a good laugh can cure just about anything. 😴💧😂",
+      "You don’t have to eat less, you just have to eat right. 🥗",
+      "A fit body, a calm mind, a house full of love. These things cannot be bought. 🏡",
+      "Happiness is the highest form of health. 😊",
+      "Take care of your body. It’s the only place you have to live. 🏋️",
+      "Breathe deeply. Move freely. Eat mindfully. Live fully. 🌬️🚶🥑🌞",
+      "Let food be thy medicine and medicine be thy food. 🍋",
+      "Discipline is choosing between what you want now and what you want most. 🕒"
+    ];
 
+    // Rotate quote daily using day of the month
+    const dailyQuote = quotes[new Date().getDate() % quotes.length];
+    const quoteElement = document.getElementById("quote");
+    if (quoteElement) {
+      quoteElement.textContent = dailyQuote;
+    }
 
+    // ✅ Install Button Logic
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+
+      // Show only on mobile
+      if (window.innerWidth < 600 && installBtn) {
+        installBtn.style.display = 'inline-block';
+      }
+    });
+
+    if (installBtn) {
+      installBtn.addEventListener('click', () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choice) => {
+            deferredPrompt = null;
+            installBtn.style.display = 'none';
+          });
+        }
+      });
+    }
+  });
+</script>
 </body>
 </html>
+
 
 
 
