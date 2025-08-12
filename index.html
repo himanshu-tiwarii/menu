@@ -187,74 +187,14 @@
     <a href="https://forms.gle/Dw65TyYw5qpcMhnL9" target="_blank">Submit Feedback</a>
   </div>
 
-  <script>
-  let deferredPrompt;
-  const installBtn = document.getElementById('installBtn');
-
-  window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent Chrome's default mini-infobar
-    e.preventDefault();
-    deferredPrompt = e;
-
-    // Show your custom install button
-    installBtn.style.display = 'block';
-
-    installBtn.addEventListener('click', () => {
-      installBtn.style.display = 'none';
-      deferredPrompt.prompt();
-
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the install prompt');
-        } else {
-          console.log('User dismissed the install prompt');
-        }
-        deferredPrompt = null;
-      });
-    });
-  });
-</script>
-
-
   <div class="footer">
     ht © Made with Masala 😋
   </div>
 
-  <script>
-    // Daily Quote
-    const quotes = [
-      "Eat food, not too much, mostly plants. 🌱",
-      "A healthy outside starts from the inside. 💧",
-      "An apple a day keeps the doctor away. 🍎",
-      "Take care of your body. It's the only place you have to live.",
-      "Wellness is the natural state of my body."
-    ];
-    document.getElementById("quote").textContent = quotes[new Date().getDate() % quotes.length];
 
-  let deferredPrompt;
-  const installBtn = document.getElementById('installBtn');
-
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    // Only show on mobile
-    if (window.innerWidth < 600) {
-      installBtn.style.display = 'inline-block';
-    }
-  });
-
-  installBtn.addEventListener('click', () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choice) => {
-        deferredPrompt = null;
-        installBtn.style.display = 'none';
-      });
-    }
-  });
-</script>
 </body>
 </html>
+
 
 
 
