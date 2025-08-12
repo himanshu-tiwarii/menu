@@ -148,27 +148,34 @@
     <div class="column">
       <h2>🍞 Breakfast<br><small>7:15 – 9:30 AM</small></h2>
       <ul>
-        <li>Aloo Paratha</li><li>Bread Butter Jam</li>
-        <li>Dalia</li><li>Boiled Chana</li><li>Curd</li><li>Tea</li><li>Milk</li>
+        <li>Methi Thepla</li>
+        <li>Aloo Sabji</li>
+        <li>Dalia</li>
+        <li>Banana</li>
+        <li>Boiled Moong</li>
+        <li>Bread Butter & Jam</li>
+        <li>Tea</li>
+        <li>Hot Milk</li>
+        <li style="color: red;">Boiled Egg</li>
 
       </ul>
     </div>
     <div class="column">
       <h2>🍛 Lunch<br><small>12:15 – 2:15 PM</small></h2>
       <ul>
-        <li>Soyabean Masala</li><li>Mix Kathol</li><li>Rice</li>
-        <li>Dal Palak</li><li>Roti</li><li>Salad</li><li>Curd</li>
+        <li>Galka chana Masala</li><li>Moong Masala</li><li>Dal Panchmale</li>
+        <li>Plain Rice</li><li>Roti</li><li>Salad</li><li>Curd</li><li style="color: red;">Chicken Masala</li>
     </div>
     <div class="column">
       <h2>🍪 Snacks<br><small>4:30 – 6:00 PM</small></h2>
       <ul>
-        <li>Boiled Corn</li><li>Tea</li><li>Coffee</li>
+        <li>Dabali</li><li>Tea</li><li>Coffee</li>
       </ul>
     </div>
     <div class="column">
       <h2>🍽 Dinner<br><small>7:30 – 9:30 PM</small></h2>
       <ul>
-        <li>Matar makhana</li><li>Dal Tadka</li><li>Rice</li>
+        <li>Aloo Parval Masala</li><li>Dal Fry</li><li>Rice</li>
         <li>Roti</li><li>Butter Milk</li><li>Salad</li>
       </ul>
     </div>
@@ -180,12 +187,34 @@
     <a href="https://forms.gle/Dw65TyYw5qpcMhnL9" target="_blank">Submit Feedback</a>
   </div>
 
-  <!-- Install Button -->
-  <div class="install-section">
-    <button class="install-btn" id="installBtn" style="display: none;">
-      📱 Download as WebApp
-    </button>
-  </div>
+  <script>
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent Chrome's default mini-infobar
+    e.preventDefault();
+    deferredPrompt = e;
+
+    // Show your custom install button
+    installBtn.style.display = 'block';
+
+    installBtn.addEventListener('click', () => {
+      installBtn.style.display = 'none';
+      deferredPrompt.prompt();
+
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        deferredPrompt = null;
+      });
+    });
+  });
+</script>
+
 
   <div class="footer">
     ht © Made with Masala 😋
@@ -226,6 +255,7 @@
 </script>
 </body>
 </html>
+
 
 
 
