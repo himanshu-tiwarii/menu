@@ -143,9 +143,16 @@
 </head>
 <body>
   <header style="color: #228B22; font-weight: bold;">
-  🍽 Menu at Annapurna Mess (Aug 13)
+  🍽 Menu at Annapurna Mess (Aug 18)
 </header>
+<script>
+    const header = document.getElementById("menu-header");
 
+    const options = { month: 'short', day: 'numeric' };
+    const today = new Date().toLocaleDateString('en-US', options);
+
+    header.textContent += ` (${today})`;
+  </script>
 
   <div class="grid">
     <div class="column">
@@ -245,6 +252,7 @@
 </script>
 </body>
 </html>
+
 
 
 
