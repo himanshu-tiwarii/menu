@@ -146,13 +146,16 @@
   🍽 Menu at Annapurna Mess (Aug 18)
 </header>
 <script>
-    const header = document.getElementById("menu-header");
+  const header = document.querySelector("header");
 
-    const options = { month: 'short', day: 'numeric' };
-    const today = new Date().toLocaleDateString('en-US', options);
+  const options = { month: 'short', day: 'numeric', timeZone: 'Asia/Kolkata' };
+  const today = new Date().toLocaleDateString('en-US', options);
 
-    header.textContent += ` (${today})`;
-  </script>
+  if (header) {
+    header.textContent = `🍽 Menu at Annapurna Mess (${today})`;
+  }
+</script>
+
 
   <div class="grid">
     <div class="column">
@@ -252,6 +255,7 @@
 </script>
 </body>
 </html>
+
 
 
 
